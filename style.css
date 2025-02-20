@@ -5,7 +5,10 @@ body {
     margin: 0;
     padding: 0;
 }
-
+#logo {
+    width: 24px; /* Reduced from 40px to make the logo smaller */
+    height: 24px;
+}
 #main-content {
     padding: 20px;
     text-align: center;
