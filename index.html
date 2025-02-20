@@ -4,20 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homework Assignments</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="main-content">
         <h1>Homework Assignments</h1>
-        <select id="assignment-select">
-            <option value="">Select an assignment</option>
-            <option value="SCOTUS Brown vs. Board of Education.pdf">SCOTUS Brown vs. Board of Education</option>
-            <option value="assignment2.pdf">Assignment 2</option>
-            <option value="assignment3.pdf">Assignment 3</option>
-        </select>
+        <div id="assignment-list">
+            <button data-pdf="assignment1.pdf">Assignment 1</button>
+            <button data-pdf="assignment2.pdf">Assignment 2</button>
+            <button data-pdf="assignment3.pdf">Assignment 3</button>
+        </div>
     </div>
     <div id="overlay">
         <button id="close-button">Close</button>
@@ -25,17 +24,15 @@
     </div>
 
     <script>
-        document.getElementById('assignment-select').addEventListener('change', function() {
-            var selectedValue = this.value;
-            if (selectedValue) {
-                // Assumes PDFs are hosted in the same directory; adjust URLs as needed
-                var pdfUrl = window.location.href + selectedValue;
-                var viewerUrl = 'https://docs.google.com/viewer?url=' + encodeURIComponent(pdfUrl) + '&embedded=true';
+        document.querySelectorAll('#assignment-list button').forEach(function(button) {
+            button.addEventListener('click', function() {
+                var pdfUrl = this.getAttribute('data-pdf');
+                var viewerUrl = 'https://docs.google.com/viewer?url=' + encodeURIComponent(window.location.href + pdfUrl) + '&embedded=true';
                 document.getElementById('pdf-viewer').src = viewerUrl;
                 document.getElementById('overlay').style.opacity = '1';
                 document.getElementById('overlay').style.pointerEvents = 'auto';
                 document.getElementById('main-content').classList.add('blurred');
-            }
+            });
         });
 
         document.getElementById('close-button').addEventListener('click', function() {
