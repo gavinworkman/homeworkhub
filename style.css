@@ -27,7 +27,7 @@ body {
 }
 
 #assignment-list button:hover {
-    background-color: #555;
+    background-color: #555 !important;
 }
 
 #overlay {
