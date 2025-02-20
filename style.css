@@ -12,13 +12,19 @@ body {
     transition: filter 0.3s;
 }
 
-#assignment-select {
+#assignment-list button {
     background-color: #333;
     color: #ffffff;
-    padding: 10px;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
     font-size: 16px;
+}
+
+#assignment-list button:hover {
+    background-color: #555;
 }
 
 #overlay {
