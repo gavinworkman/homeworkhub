@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework Assignments</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="main-content">
+        <h1>Homework Assignments</h1>
+        <select id="assignment-select">
+            <option value="">Select an assignment</option>
+            <option value="assignment1.pdf">Assignment 1</option>
+            <option value="assignment2.pdf">Assignment 2</option>
+            <option value="assignment3.pdf">Assignment 3</option>
+        </select>
+    </div>
+    <div id="overlay">
+        <button id="close-button">Close</button>
+        <iframe id="pdf-viewer" src=""></iframe>
+    </div>
+
+    <script>
+        document.getElementById('assignment-select').addEventListener('change', function() {
+            var selectedValue = this.value;
+            if (selectedValue) {
+                // Assumes PDFs are hosted in the same directory; adjust URLs as needed
+                var pdfUrl = window.location.href + selectedValue;
+                var viewerUrl = 'https://docs.google.com/viewer?url=' + encodeURIComponent(pdfUrl) + '&embedded=true';
+                document.getElementById('pdf-viewer').src = viewerUrl;
+                document.getElementById('overlay').style.opacity = '1';
+                document.getElementById('overlay').style.pointerEvents = 'auto';
+                document.getElementById('main-content').classList.add('blurred');
+            }
+        });
+
+        document.getElementById('close-button').addEventListener('click', function() {
+            document.getElementById('overlay').style.opacity = '0';
+            document.getElementById('overlay').style.pointerEvents = 'none';
+            document.getElementById('main-content').classList.remove('blurred');
+            document.getElementById('pdf-viewer').src = '';
+        });
+    </script>
+</body>
+</html>
