@@ -12,8 +12,8 @@ header {
     padding: 10px; /* Increased from 5px to 10px for more offset */
 }
 #logo {
-    width: 24px; /* Reduced from 40px to make the logo smaller */
-    height: 24px;
+    width: 30px; /* Reduced from 40px to make the logo smaller */
+    height: 30px;
 }
 #main-content {
     padding: 20px;
